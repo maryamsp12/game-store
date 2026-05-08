@@ -1,4 +1,5 @@
 import { Grid, Box } from "@mui/material";
+import NavBar from "./componets/NavBar";
 
 export default function App() {
   return (
@@ -22,11 +23,10 @@ export default function App() {
       <Box
         sx={{
           gridArea: "nav",
-          backgroundColor: "coral",
           p: 2,
         }}
       >
-        Nav
+        <NavBar />
       </Box>
 
       {/* Aside (only show on lg) */}
