@@ -33,7 +33,6 @@ export default function App() {
       <Box
         sx={{
           gridArea: "aside",
-          backgroundColor: "gold",
           p: 2,
           display: { xs: "none", lg: "block" },
         }}
@@ -45,7 +44,6 @@ export default function App() {
       <Box
         sx={{
           gridArea: "main",
-          backgroundColor: "dodgerblue",
           p: 2,
         }}
       >
