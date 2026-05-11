@@ -1,5 +1,6 @@
 import { Grid, Box } from "@mui/material";
-import NavBar from "./componets/NavBar";
+import NavBar from "./components/NavBar";
+import GameGrid from "./components/GameGrid";
 
 export default function App() {
   return (
@@ -47,7 +48,7 @@ export default function App() {
           p: 2,
         }}
       >
-        Main
+        <GameGrid />
       </Box>
     </Grid>
   );
