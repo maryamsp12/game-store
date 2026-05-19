@@ -9,6 +9,7 @@ import {
 import type { Game } from "../hooks/useGames";
 import PlatformIconsList from "./PlatformIconsList";
 import CriticScore from "./CriticScore";
+import getCroppedImageUrl from "../services/image-url";
 
 interface Props {
   game: Game;
@@ -28,7 +29,7 @@ const GameCard = ({ game }: Props) => {
         <CardMedia
           component="img"
           height="140"
-          image={game.background_image}
+          image={getCroppedImageUrl(game.background_image)}
           alt="green iguana"
         />
         <CardContent>
