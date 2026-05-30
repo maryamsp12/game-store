@@ -2,8 +2,11 @@ import { Grid, Box } from "@mui/material";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
+import { useState } from "react";
+import type { Genre } from "./hooks/useGenres";
 
 export default function App() {
+  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
   return (
     <Grid
       container
@@ -37,7 +40,7 @@ export default function App() {
           display: { xs: "none", lg: "block" },
         }}
       >
-        <GenreList />
+        <GenreList onSelectGenre={(genre) => setSelectedGenre(genre)} selectedGenre={null}/>
       </Box>
 
       <Box
@@ -46,7 +49,7 @@ export default function App() {
           p: 2,
         }}
       >
-        <GameGrid />
+        <GameGrid selectedGenre={selectedGenre}/>
       </Box>
     </Grid>
   );

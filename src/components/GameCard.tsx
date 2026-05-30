@@ -43,21 +43,20 @@ const GameCard = ({ game }: Props) => {
           >
             {game.name}
           </Typography>
-          <Typography variant="body2" sx={{ color: "text.secondary" }}>
-            {/* <ul style={{ listStyle: "none", padding: 0, margin: 0 }}> */}
+          {/* <Typography variant="body2" sx={{ color: "text.secondary" }}> */}
             <Stack
               direction="row"
               spacing={1}
               justifyContent={"space-between"}
               alignItems={"center"}
+              sx={{ color: "text.secondary" }}
             >
               <PlatformIconsList
                 platforms={game.parent_platforms.map((pp) => pp.platform)}
               />
               <CriticScore score={game.metacritic} />
             </Stack>
-            {/* </ul> */}
-          </Typography>
+          {/* </Typography> */}
         </CardContent>
       </CardActionArea>
     </Card>
