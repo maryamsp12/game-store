@@ -1,6 +1,7 @@
 import { Grid, Box } from "@mui/material";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
+import GenreList from "./components/GenreList";
 
 export default function App() {
   return (
@@ -20,7 +21,6 @@ export default function App() {
         minHeight: "100vh",
       }}
     >
-      {/* Nav */}
       <Box
         sx={{
           gridArea: "nav",
@@ -30,7 +30,6 @@ export default function App() {
         <NavBar />
       </Box>
 
-      {/* Aside (only show on lg) */}
       <Box
         sx={{
           gridArea: "aside",
@@ -38,10 +37,9 @@ export default function App() {
           display: { xs: "none", lg: "block" },
         }}
       >
-        Aside
+        <GenreList />
       </Box>
 
-      {/* Main */}
       <Box
         sx={{
           gridArea: "main",
