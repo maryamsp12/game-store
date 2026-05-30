@@ -40,7 +40,7 @@ export default function App() {
           display: { xs: "none", lg: "block" },
         }}
       >
-        <GenreList onSelectGenre={(genre) => setSelectedGenre(genre)} selectedGenre={null}/>
+        <GenreList onSelectGenre={(genre) => setSelectedGenre(genre)} selectedGenre={selectedGenre}/>
       </Box>
 
       <Box

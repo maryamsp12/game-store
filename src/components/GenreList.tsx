@@ -1,4 +1,11 @@
-import { Button, CircularProgress, List, ListItem, Stack, Typography } from "@mui/material";
+import {
+  Button,
+  CircularProgress,
+  List,
+  ListItem,
+  Stack,
+  Typography,
+} from "@mui/material";
 import useGenres, { type Genre } from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
 
@@ -8,8 +15,8 @@ interface Props {
 }
 const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
   const { data: genres, error, isLoading } = useGenres();
-   if (error) return null;
-   if (isLoading) return <CircularProgress />;
+  if (error) return null;
+  if (isLoading) return <CircularProgress />;
   return (
     <List>
       {genres.map((genre) => (
@@ -18,11 +25,23 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
             <img
               src={getCroppedImageUrl(genre.image_background)}
               alt={genre.name}
-              style={{ width: 32, height: 32, borderRadius: 8 }}
+              style={{
+                width: 32,
+                height: 32,
+                borderRadius: 8,
+                objectFit: "cover",
+              }}
             />
-            <Button onClick={() => onSelectGenre(genre)} variant="text">
+            <Typography
+              onClick={() => onSelectGenre(genre)}
+              sx={{
+                fontWeight: genre.id === selectedGenre?.id ? "bold" : "normal",
+                cursor: "pointer",
+                "&:hover": { color: "primary.main" },
+              }}
+            >
               {genre.name}
-            </Button>
+            </Typography>
           </Stack>
         </ListItem>
       ))}
