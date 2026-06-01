@@ -1,38 +1,41 @@
-import { FormControl, InputLabel, MenuItem, Select, type SelectChangeEvent } from "@mui/material";
-import { useState } from "react";
+import { Button, Menu, MenuItem} from "@mui/material";
+import type { SxProps } from "@mui/material";
 import usePlatforms, { type Platform } from "../hooks/usePlatforms";
+import { useState } from "react";
 
 interface Props {
   onSelectPlatform: (platform: Platform) => void;
-  selectedPlatform: Platform | null;
+  selectedPlatform: Platform | null;  // ← add
+  sx?: SxProps;                        // ← add
 }
 
-const PlatformSelector = ({ onSelectPlatform }: Props) => {
-
-  const [platform, setPlatform] = useState("");
+const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
   const { data: platforms } = usePlatforms();
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
 
-  const handleChange = (event: SelectChangeEvent) => {
-    setPlatform(event.target.value);
+  const handleOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
   };
-
+  const handleClose = () => setAnchorEl(null);
   return (
-    <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
-      <InputLabel id="demo-simple-select-filled-label">Platform</InputLabel>
-      <Select
-        labelId="demo-simple-select-filled-label"
-        id="demo-simple-select-filled"
-        value={platform}
-        onChange={handleChange}
-        label="Platform"
-      >
+    <>
+      <Button onClick={handleOpen}>{selectedPlatform ? `Platform: ${selectedPlatform.name}` : "Platform"}</Button>
+      <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
         {platforms?.map((platform: Platform) => (
-          <MenuItem key={platform.id} value={platform.id} onClick={() => onSelectPlatform(platform)}>
+          <MenuItem
+            key={platform.id}
+            value={platform.id}
+            onClick={() => {
+              onSelectPlatform(platform);
+              handleClose();
+            }}
+          >
             {platform.name}
           </MenuItem>
         ))}
-      </Select>
-    </FormControl>
+      </Menu>
+    </>
   );
 };
 

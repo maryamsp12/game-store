@@ -1,4 +1,4 @@
-import { Grid, Box } from "@mui/material";
+import { Grid, Box, Stack } from "@mui/material";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
@@ -6,6 +6,7 @@ import { useState } from "react";
 import type { Genre } from "./hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
 import type { Platform } from "./hooks/usePlatforms";
+import SortSelector from "./components/SortSelector";
 
 export interface GameQuery {
   genre: Genre | null;
@@ -13,9 +14,8 @@ export interface GameQuery {
 }
 
 export default function App() {
+  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
-  const[ gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
-  
   return (
     <Grid
       container
@@ -49,7 +49,10 @@ export default function App() {
           display: { xs: "none", lg: "block" },
         }}
       >
-        <GenreList onSelectGenre={(genre) => setGameQuery({...gameQuery, genre})} selectedGenre={gameQuery.genre}/>
+        <GenreList
+          onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
+          selectedGenre={gameQuery.genre}
+        />
       </Box>
 
       <Box
@@ -58,8 +61,17 @@ export default function App() {
           p: 2,
         }}
       >
-        <PlatformSelector onSelectPlatform={(platform) => setGameQuery({...gameQuery, platform})} selectedPlatform={gameQuery.platform}/>
-        <GameGrid gameQuery={gameQuery}/>
+        <Stack direction="row" spacing={2} mb={2} pl={2} >
+          <PlatformSelector
+            onSelectPlatform={(platform) =>
+              setGameQuery({ ...gameQuery, platform })
+            }
+            selectedPlatform={gameQuery.platform}
+            sx={{ flex: 1 }} 
+          />
+          <SortSelector />
+        </Stack>
+        <GameGrid gameQuery={gameQuery} />
       </Box>
     </Grid>
   );
