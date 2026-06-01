@@ -1,9 +1,12 @@
 import { Button, Menu, MenuItem } from "@mui/material";
 import { useState } from "react";
 
-interface Props {}
+interface Props {
+  onSelectSortOrder: (sort: string) => void;
+  sortOrder: string;
+}
 
-const SortSelector = ({}: Props) => {
+const SortSelector = ({ onSelectSortOrder, sortOrder }: Props) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -12,16 +15,32 @@ const SortSelector = ({}: Props) => {
   };
   const handleClose = () => setAnchorEl(null);
 
+  const setOrders =  [
+    { value: "", label: "Relevance" },
+    { value: "-added", label: "Date Added" },
+    { value: "name", label: "Name" },
+    { value: "-released", label: "Release Date" },
+    { value: "metacritic", label: "Popularity" },
+    { value: "-rating", label: "Average Rating" },
+  ];
+  
+  const currentSortOrder = setOrders.find(order => order.value === sortOrder)?.label || "Relevance";
   return (
     <>
-      <Button onClick={handleOpen}>Sort by: Relevance</Button>
+      <Button onClick={handleOpen}>Sort by: {currentSortOrder}</Button>
       <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
-        <MenuItem value={"relevance"}>Relevance</MenuItem>
-        <MenuItem value={"date_added"}>Date Added</MenuItem>
-        <MenuItem value={"name"}>Name</MenuItem>
-        <MenuItem value={"release_date"}>Release Date</MenuItem>
-        <MenuItem value={"popularity"}>Popularity</MenuItem>
-        <MenuItem value={"average_rating"}>Average Rating</MenuItem>
+        {setOrders.map((order) => (
+          <MenuItem
+            key={order.value}
+            value={order.value}
+            onClick={() => {
+              onSelectSortOrder(order.value);
+              handleClose();
+            }}
+          >
+            {order.label}
+          </MenuItem>
+        ))}
       </Menu>
     </>
   );
