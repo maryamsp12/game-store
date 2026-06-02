@@ -1,4 +1,4 @@
-import { Grid, Box, Stack } from "@mui/material";
+import { Grid, Box, Stack, Typography } from "@mui/material";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
@@ -56,6 +56,9 @@ export default function App() {
           display: { xs: "none", lg: "block" },
         }}
       >
+        <Stack direction="row" spacing={2} mb={2} pl={2}>
+          <Typography variant="h5">{"Genres"}</Typography>
+        </Stack>
         <GenreList
           onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
           selectedGenre={gameQuery.genre}
