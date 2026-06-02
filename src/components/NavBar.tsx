@@ -1,8 +1,13 @@
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import logo from "../assets/logo.webp";
 import ColorModeSwitch from "./ColorModeSwitch";
+import { SearchInput } from "./SearchInput";
 
-const Navbar = () => {
+interface Props {
+  setSearchQuery: (query: string) => void;
+}
+
+const Navbar = ({ setSearchQuery }: Props) => {
   return (
     <Stack
       direction={"row"}
@@ -17,8 +22,8 @@ const Navbar = () => {
           alt="image"
           sx={{ width: 60, height: 60 }}
         />
-        <Typography variant="h6">NavBar</Typography>
       </Stack>
+      <SearchInput onSearch={(input) => setSearchQuery(input)} />
       <ColorModeSwitch />
     </Stack>
   );

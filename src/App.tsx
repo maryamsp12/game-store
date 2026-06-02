@@ -12,6 +12,7 @@ export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
   sortOrder: string;
+  searchText: string;
 }
 
 export default function App() {
@@ -40,7 +41,7 @@ export default function App() {
           p: 2,
         }}
       >
-        <NavBar />
+        <NavBar setSearchQuery={(searchText) => setGameQuery({ ...gameQuery, searchText })} />
       </Box>
 
       <Box
