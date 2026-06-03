@@ -22,8 +22,8 @@ const Navbar = ({ setSearchQuery }: Props) => {
           alt="image"
           sx={{ width: 60, height: 60 }}
         />
-      </Stack>
       <SearchInput onSearch={(input) => setSearchQuery(input)} />
+      </Stack>
       <ColorModeSwitch />
     </Stack>
   );

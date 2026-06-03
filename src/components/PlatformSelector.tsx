@@ -20,7 +20,9 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
   const handleClose = () => setAnchorEl(null);
   return (
     <>
-      <Button onClick={handleOpen}>{selectedPlatform ? `Platform: ${selectedPlatform.name}` : "Platform"}</Button>
+      <Button variant="outlined" onClick={handleOpen}>
+        {selectedPlatform ? `Platform: ${selectedPlatform.name}` : "Platform"}
+      </Button>
       <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
         {platforms?.map((platform: Platform) => (
           <MenuItem

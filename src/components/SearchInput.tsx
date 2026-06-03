@@ -22,10 +22,13 @@ export const SearchInput = ({ onSearch }: Props) => {
         bgcolor: "background.paper",
         borderRadius: 1,
         px: 2,
+        border: "1px solid",
+        borderColor: "divider",
       }}
     >
       <SearchIcon sx={{ color: "text.secondary", mr: 1 }} />
       <InputBase
+        fullWidth
         name="search"
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}

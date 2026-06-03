@@ -21,13 +21,15 @@ const SortSelector = ({ onSelectSortOrder, sortOrder }: Props) => {
     { value: "name", label: "Name" },
     { value: "-released", label: "Release Date" },
     { value: "metacritic", label: "Popularity" },
-    { value: "-rating", label: "Average Rating" },
+    { value: "rating", label: "Average Rating" },
   ];
   
   const currentSortOrder = setOrders.find(order => order.value === sortOrder)?.label || "Relevance";
   return (
     <>
-      <Button onClick={handleOpen}>Sort by: {currentSortOrder}</Button>
+      <Button variant="outlined" onClick={handleOpen}>
+        Sort by: {currentSortOrder}
+      </Button>
       <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
         {setOrders.map((order) => (
           <MenuItem

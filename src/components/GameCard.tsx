@@ -18,6 +18,7 @@ interface Props {
 const GameCard = ({ game }: Props) => {
   return (
     <Card
+      variant="outlined"
       sx={{
         maxWidth: 345,
         height: "100%",
@@ -44,18 +45,18 @@ const GameCard = ({ game }: Props) => {
             {game.name}
           </Typography>
           {/* <Typography variant="body2" sx={{ color: "text.secondary" }}> */}
-            <Stack
-              direction="row"
-              spacing={1}
-              justifyContent={"space-between"}
-              alignItems={"center"}
-              sx={{ color: "text.secondary" }}
-            >
-              <PlatformIconsList
-                platforms={game.parent_platforms.map((pp) => pp.platform)}
-              />
-              <CriticScore score={game.metacritic} />
-            </Stack>
+          <Stack
+            direction="row"
+            spacing={1}
+            justifyContent={"space-between"}
+            alignItems={"center"}
+            sx={{ color: "text.secondary" }}
+          >
+            <PlatformIconsList
+              platforms={game.parent_platforms.map((pp) => pp.platform)}
+            />
+            <CriticScore score={game.metacritic} />
+          </Stack>
           {/* </Typography> */}
         </CardContent>
       </CardActionArea>
