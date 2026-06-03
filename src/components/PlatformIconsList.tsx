@@ -3,8 +3,6 @@ import {
   FaWindows,
   FaPlaystation,
   FaXbox,
-  FaApple,
-  FaLinux,
   FaAndroid,
   FaGamepad,
 } from "react-icons/fa";
@@ -23,8 +21,6 @@ const PlatformIconsList = ({ platforms }: Props) => {
     playstation: <FaPlaystation />,
     xbox: <FaXbox />,
     nintendo: <FaGamepad />,
-    mac: <FaApple />,
-    linux: <FaLinux />,
     android: <FaAndroid />,
     ios: <MdPhoneIphone />,
     web: <BsGlobe />,
