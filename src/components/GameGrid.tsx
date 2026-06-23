@@ -17,7 +17,7 @@ const GameGrid = ({ gameQuery }: Props) => {
   if (error)
     return (
       <Typography variant="h2" component="h1">
-        {error}
+        {error.message}
       </Typography>
     );
 
@@ -31,7 +31,7 @@ const GameGrid = ({ gameQuery }: Props) => {
             </GameCardContainer>
           </Grid>
         ))}
-      {games.map((game) => (
+      {games?.results.map((game) => (
         <Grid key={game.id} size={{ xs: 12, sm: 6, md: 4, lg: 4 }}>
           <GameCardContainer>
             <GameCard game={game} />
