@@ -24,7 +24,7 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
         {selectedPlatform ? `Platform: ${selectedPlatform.name}` : "Platform"}
       </Button>
       <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
-        {platforms?.map((platform: Platform) => (
+        {platforms?.results.map((platform: Platform) => (
           <MenuItem
             key={platform.id}
             value={platform.id}
