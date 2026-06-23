@@ -1,4 +1,3 @@
-import type { Platform } from "../hooks/useGames";
 import {
   FaWindows,
   FaPlaystation,
@@ -11,6 +10,7 @@ import { MdPhoneIphone } from "react-icons/md";
 import { BsGlobe } from "react-icons/bs";
 import { Stack } from "@mui/system";
 import { grey } from "@mui/material/colors";
+import type { Platform } from "../hooks/usePlatforms";
 
 interface Props {
   platforms: Platform[];
