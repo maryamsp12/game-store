@@ -13,9 +13,9 @@ export interface Genre {
 const useGenres = () =>
   useQuery({
     queryKey: ["genres"],
-    queryFn: apiClient.getAll,
+    queryFn: () => apiClient.getAll({}).then((res) => res.results),
     staleTime: 24 * 60 * 60 * 1000, // 24 hours
-    initialData:{ count: genres.length, results: genres}
+    initialData: genres,
     });
 
 export default useGenres;

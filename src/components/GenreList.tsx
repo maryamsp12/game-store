@@ -18,7 +18,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
   if (isLoading) return <CircularProgress />;
   return (
     <List>
-      {genres?.results.map((genre) => (
+      {genres?.map((genre) => (
         <ListItem key={genre.id}>
           <Stack direction="row" spacing={2}>
             <img
