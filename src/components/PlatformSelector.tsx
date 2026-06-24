@@ -5,11 +5,11 @@ import { useState } from "react";
 
 interface Props {
   onSelectPlatform: (platform: Platform) => void;
-  selectedPlatform: Platform | null;  // ← add
+  selectedPlatformId: number | undefined;  // ← add
   sx?: SxProps;                        // ← add
 }
 
-const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
+const PlatformSelector = ({ onSelectPlatform, selectedPlatformId }: Props) => {
   const { data: platforms } = usePlatforms();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -21,7 +21,7 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
   return (
     <>
       <Button variant="outlined" onClick={handleOpen}>
-        {selectedPlatform ? `Platform: ${selectedPlatform.name}` : "Platform"}
+        {selectedPlatformId ? `Platform: ${platforms?.find(p => p.id === selectedPlatformId)?.name}` : "Platform"}
       </Button>
       <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
         {platforms?.map((platform: Platform) => (
