@@ -6,6 +6,7 @@ import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
 import type { GameQuery } from "../App";
 import React from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 interface Props {
   gameQuery: GameQuery;
@@ -29,39 +30,39 @@ const GameGrid = ({ gameQuery }: Props) => {
       </Typography>
     );
 
+  const fetchedGamesCount =
+    games?.pages.reduce((total, page) => total + page.results.length, 0) || 0;
+
   return (
     <>
-      <Grid container spacing={4} p={2}>
-        {isLoading &&
-          skeletons.map((skeleton) => (
-            <Grid key={skeleton} size={{ xs: 12, sm: 6, md: 4, lg: 4 }}>
-              <GameCardContainer>
-                <GameCardSkeleton />
-              </GameCardContainer>
-            </Grid>
-          ))}
-        {games?.pages.map((page, index) => (
-          <React.Fragment key={index}>
-            {page.results.map((game) => (
-              <Grid key={game.id} size={{ xs: 12, sm: 6, md: 4, lg: 4 }}>
+      <InfiniteScroll
+        dataLength={fetchedGamesCount}
+        hasMore={!!hasNextPage}
+        next={fetchNextPage}
+        loader={<h4>Loading...</h4>}
+      >
+        <Grid container spacing={4} p={2}>
+          {isLoading &&
+            skeletons.map((skeleton) => (
+              <Grid key={skeleton} size={{ xs: 12, sm: 6, md: 4, lg: 4 }}>
                 <GameCardContainer>
-                  <GameCard game={game} />
+                  <GameCardSkeleton />
                 </GameCardContainer>
               </Grid>
             ))}
-          </React.Fragment>
-        ))}
-      </Grid>
-      {hasNextPage && (
-        <Button
-          variant="outlined"
-          onClick={() => fetchNextPage()}
-          sx={{ my: 4 }}
-          disabled={isFetchingNextPage}
-        >
-          {isFetchingNextPage ? "Loading..." : "Load More"}
-        </Button>
-      )}
+          {games?.pages.map((page, index) => (
+            <React.Fragment key={index}>
+              {page.results.map((game) => (
+                <Grid key={game.id} size={{ xs: 12, sm: 6, md: 4, lg: 4 }}>
+                  <GameCardContainer>
+                    <GameCard game={game} />
+                  </GameCardContainer>
+                </Grid>
+              ))}
+            </React.Fragment>
+          ))}
+        </Grid>
+      </InfiniteScroll>
     </>
   );
 };
