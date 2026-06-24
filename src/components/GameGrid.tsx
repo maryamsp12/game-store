@@ -1,7 +1,7 @@
 import Grid from "@mui/material/Grid";
 import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
-import { Button, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
 import type { GameQuery } from "../App";
@@ -17,7 +17,6 @@ const GameGrid = ({ gameQuery }: Props) => {
     data: games,
     error,
     isLoading,
-    isFetchingNextPage,
     fetchNextPage,
     hasNextPage,
   } = useGames(gameQuery);
