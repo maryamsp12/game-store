@@ -1,25 +1,68 @@
-About
+# 🎮 Game Store
 
-Game-store is a video game discovery web app that helps you find new and interesting games to play. With Game-store, you can search for games by platform, genre, and more.
-Website with a list of games, sorted by different categories, filter by category, dynamic rendering.
+A video game discovery web application built with React and TypeScript that helps users explore and discover games across different platforms and genres.
 
-When writing the project, used:
+Browse a collection of video games, filter games by category, and explore game details through a clean and responsive user interface.
 
-React.js;
-Vite.js;
-rawg.io RESTful API;
-Material UI Component Library.
+## ✨ Features
 
-Getting Started
+* 🎯 **Game Discovery** — Explore a wide collection of video games.
+* 🔍 **Search Games** — Find games by title.
+* 🗂️ **Category Filtering** — Filter games by genre and platform.
+* 📊 **Dynamic Rendering** — Display game data dynamically using the RAWG API.
+* 🎨 **Material UI** — Build a consistent and user-friendly interface using reusable UI components.
+* ⚡ **Fast Development** — Powered by Vite for a fast development experience.
 
-To get started, follow these steps:
+## 🛠️ Tech Stack
 
-Clone this repository to your local machine.
+* **React** — Component-based UI development
+* **TypeScript** — Type-safe JavaScript
+* **Vite** — Development server and build tool
+* **Material UI (MUI)** — UI component library
+* **RAWG Video Games Database API** — Fetching video game data
+* **REST API** — Communicating with the RAWG API
 
-Run npm install to install the required dependencies.
+## 🚀 Getting Started
 
-Get a RAWG API key at https://rawg.io/apidocs. You'll have to create an account first.
+Follow these steps to run the project locally.
 
-Add the API key to src/services/api-client.ts
+### 1. Clone the repository
 
-Run npm run dev to start the web server.
+```bash
+git clone <your-repository-url>
+cd game-store
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Configure the RAWG API key
+
+1. Create an account at [RAWG.io](https://rawg.io/apidocs).
+2. Generate your API key.
+3. Add the key to your API client configuration in `src/services/api-client.ts`.
+
+**Note:** Avoid committing API keys or other secrets to a public repository.
+
+### 4. Start the development server
+
+```bash
+npm run dev
+```
+
+Open the local URL displayed in your terminal to view the application.
+
+## 📁 Project Highlights
+
+This project demonstrates practical experience with React components, TypeScript, REST API integration, dynamic data rendering, and reusable Material UI components.
+
+## 🎯 Project Goal
+
+The goal of Game Store is to provide a simple and intuitive way to discover video games while practising modern frontend development techniques.
+
+---
+
+**Built with ❤️ using React, TypeScript, and Material UI.**
